@@ -123,11 +123,11 @@ const MyLinks = () => {
                 <div className="flex justify-between items-center">
                   {/* Short URL */}
                   <a
-                    href={`${backendBaseURL}/api/${url.shortCode}`}
+                    href={`${backendBaseURL}/${url.shortCode}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 break-all"
-                  >{`${backendBaseURL}/api/${url.shortCode}`}</a>
+                  >{`${backendBaseURL}/${url.shortCode}`}</a>
 
                   <div className="flex items-center gap-4">
                     {/* Click Counter with Tooltip */}
@@ -145,7 +145,7 @@ const MyLinks = () => {
                     {/* Copy Button */}
                     <button
                       onClick={() =>
-                        handleCopy(`${backendBaseURL}/api/${url.shortCode}`)
+                        handleCopy(`${backendBaseURL}/${url.shortCode}`)
                       }
                       className="text-sm bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded flex items-center gap-2 transition"
                     >
