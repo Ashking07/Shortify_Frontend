@@ -6,6 +6,7 @@ import { useUser } from "../context/useUser.jsx";
 import { Link } from "react-router-dom";
 
 const backendBaseURL = import.meta.env.VITE_BACKEND_URL;
+//Updated above in Vercel and here too
 
 const Login = () => {
   const [email, setEmail] = useState("");
