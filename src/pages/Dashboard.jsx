@@ -53,7 +53,7 @@ const Dashboard = () => {
     try {
       const res = await toast.promise(
         axios.post(
-          `${backendBaseURL}/shorten`,
+          `${backendBaseURL}/api/shorten`,
           { originalUrl },
           {
             headers: {
