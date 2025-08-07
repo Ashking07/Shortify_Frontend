@@ -82,13 +82,14 @@ const Login = () => {
           Login
         </button>
 
-        <p className="text-center text-sm mt-6">
-          Don&apos;t have an account?{" "}
+        <p className="text-center text-sm mt-8 text-gray-300">
+          Don&apos;t have an account?
+          <br />
           <Link
             to="/register"
-            className="inline-block mt-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition"
+            className="mt-3 inline-block bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white px-5 py-2 rounded-md shadow transition duration-300"
           >
-            Register
+            Create an Account
           </Link>
         </p>
       </form>
