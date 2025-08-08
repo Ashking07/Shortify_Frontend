@@ -14,7 +14,7 @@ const Footer = () => {
     const email = localStorage.getItem("email");
 
     if (!email || !feedback.trim()) {
-      toast.warn("Please login and enter valid feedback.");
+      toast("Please login and enter valid feedback.");
       return;
     }
 
