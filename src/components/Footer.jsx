@@ -1,8 +1,37 @@
-// components/Footer.jsx
-import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import axios from "axios";
+import toast from "react-hot-toast";
+
+const backendBaseURL = import.meta.env.VITE_BACKEND_URL;
 
 const Footer = () => {
+  const [feedback, setFeedback] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent page reload
+
+    const email = localStorage.getItem("email");
+
+    if (!email || !feedback.trim()) {
+      toast.warn("Please login and enter valid feedback.");
+      return;
+    }
+
+    try {
+      const res = await axios.post(`${backendBaseURL}/feedback`, {
+        email,
+        feedback,
+      });
+
+      toast.success(res.data.message);
+      setFeedback(""); // Clear textarea
+    } catch (err) {
+      console.error("Error submitting feedback:", err);
+      toast.error("Failed to send feedback. Try again.");
+    }
+  };
+
   return (
     <footer
       className="mt-24 bg-white/10 backdrop-blur-lg text-white py-10 px-6 rounded-t-3xl shadow-inner"
@@ -37,14 +66,11 @@ const Footer = () => {
           <h2 className="text-xl font-semibold mb-4">
             Feel Free To Drop A Feedback 👋
           </h2>
-          <form className="space-y-4">
-            <input
-              type="email"
-              placeholder="Your email"
-              className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none"
-            />
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <textarea
               rows="4"
+              value={feedback}
+              onChange={(e) => setFeedback(e.target.value)}
               placeholder="Your feedback"
               className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 focus:outline-none"
             />
